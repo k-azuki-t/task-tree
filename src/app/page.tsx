@@ -1,4 +1,4 @@
-import GoogleSignUp from "@/components/app/top/GoogleSignUp";
+import GoogleSignUp from "@/components/features/Top/components/GoogleSignUp";
 import { Waypoints } from 'lucide-react';
 
 export default function Home() {
