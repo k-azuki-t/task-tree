@@ -1,6 +1,6 @@
 import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar"
-import { AppSidebar } from "@/components/shared/AppSidebar"
-import { AppBreadcrumb } from "@/components/shared/AppHeader"
+import { AppSidebar } from "@/components/features/Dashboard/components/AppSidebar"
+import { AppBreadcrumb } from "@/components/features/Dashboard/components/AppBreadcrumb"
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   return (
