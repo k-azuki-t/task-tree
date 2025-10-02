@@ -80,7 +80,7 @@ export default function WorkspaceList() {
                     </DialogHeader>
                     <div className="grid gap-4">
                         <div className="grid gap-3">
-                        <Label htmlFor="name">Description</Label>
+                        <Label htmlFor="name">Name</Label>
                         <Input id="name" name="name" />
                         </div>
                         <div className="grid gap-3">
