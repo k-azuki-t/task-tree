@@ -1,3 +1,4 @@
+import { TaskTable } from "@/components/features/WorkSpace/components/TaskTable"
 import {
   Avatar,
   AvatarFallback,
@@ -39,6 +40,7 @@ export default function Page() {
           </div>
         </div>
       </div>
+      <TaskTable />
     </div>
   )
 }
