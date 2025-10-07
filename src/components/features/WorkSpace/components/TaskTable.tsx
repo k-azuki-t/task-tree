@@ -1,87 +1,102 @@
+'use client'
+
 import {
   Table,
   TableBody,
   TableCaption,
   TableCell,
-  TableFooter,
   TableHead,
   TableHeader,
   TableRow,
 } from "@/components/ui/table"
+import { useRouter } from "next/navigation"
 
 const invoices = [
   {
-    invoice: "INV001",
-    paymentStatus: "Paid",
-    totalAmount: "$250.00",
-    paymentMethod: "Credit Card",
+    id: "1",
+    title: "Project001",
+    startdate: "2025-10-01",
+    duedate: "2025-11-01",
+    leader: "kurage",
+    taskStatus: "done",
   },
   {
-    invoice: "INV002",
-    paymentStatus: "Pending",
-    totalAmount: "$150.00",
-    paymentMethod: "PayPal",
+    id: "2",
+    title: "Project002",
+    startdate: "2025-10-01",
+    duedate: "2025-11-01",
+    leader: "kurage",
+    taskStatus: "done",
   },
   {
-    invoice: "INV003",
-    paymentStatus: "Unpaid",
-    totalAmount: "$350.00",
-    paymentMethod: "Bank Transfer",
+    id: "3",
+    title: "Project003",
+    startdate: "2025-10-01",
+    duedate: "2025-11-01",
+    leader: "kurage",
+    taskStatus: "done",
   },
   {
-    invoice: "INV004",
-    paymentStatus: "Paid",
-    totalAmount: "$450.00",
-    paymentMethod: "Credit Card",
+    id: "4",
+    title: "Project004",
+    startdate: "2025-10-01",
+    duedate: "2025-11-01",
+    leader: "kurage",
+    ptaskStatus: "done",
   },
   {
-    invoice: "INV005",
-    paymentStatus: "Paid",
-    totalAmount: "$550.00",
-    paymentMethod: "PayPal",
+    id: "5",
+    title: "Project005",
+    startdate: "2025-10-01",
+    duedate: "2025-11-01",
+    leader: "kurage",
+    taskStatus: "done",
   },
   {
-    invoice: "INV006",
-    paymentStatus: "Pending",
-    totalAmount: "$200.00",
-    paymentMethod: "Bank Transfer",
+    id: "6",
+    title: "Project006",
+    startdate: "2025-10-01",
+    duedate: "2025-11-01",
+    leader: "kurage",
+    taskStatus: "done",
   },
   {
-    invoice: "INV007",
-    paymentStatus: "Unpaid",
-    totalAmount: "$300.00",
-    paymentMethod: "Credit Card",
+    id: "7",
+    title: "Project007",
+    startdate: "2025-10-01",
+    duedate: "2025-11-01",
+    leader: "kurage",
+    taskStatus: "done",
   },
 ]
 
 export function TaskTable() {
+
+  const router = useRouter();
+
   return (
-    <Table>
+    <Table className="table-fixed w-full">
       <TableCaption>A list of your recent invoices.</TableCaption>
       <TableHeader>
         <TableRow>
-          <TableHead className="w-[100px]">Invoice</TableHead>
-          <TableHead>Status</TableHead>
-          <TableHead>Method</TableHead>
-          <TableHead className="text-right">Amount</TableHead>
+          <TableHead className="w-3/12">Title</TableHead>
+          <TableHead className="w-1/12">Start Date</TableHead>
+          <TableHead className="w-1/12">Due Date</TableHead>
+          <TableHead className="w-3/12">leader</TableHead>
+          <TableHead className="w-4/12">status</TableHead>
         </TableRow>
       </TableHeader>
       <TableBody>
         {invoices.map((invoice) => (
-          <TableRow key={invoice.invoice} className="h-20">
-            <TableCell className="font-medium">{invoice.invoice}</TableCell>
-            <TableCell>{invoice.paymentStatus}</TableCell>
-            <TableCell>{invoice.paymentMethod}</TableCell>
-            <TableCell className="text-right">{invoice.totalAmount}</TableCell>
+          <TableRow key={invoice.id} className="h-20" onClick={() => router.push("/dashboard")}>
+            <TableCell className="text-2xl font-bold">{invoice.title}</TableCell>
+            <TableCell>{invoice.startdate}</TableCell>
+            <TableCell>{invoice.duedate}</TableCell>
+            <TableCell>{invoice.leader}</TableCell>
+            <TableCell>{invoice.taskStatus}</TableCell>
           </TableRow>
         ))}
       </TableBody>
-      <TableFooter>
-        <TableRow>
-          <TableCell colSpan={3}>Total</TableCell>
-          <TableCell className="text-right">$2,500.00</TableCell>
-        </TableRow>
-      </TableFooter>
     </Table>
   )
 }
