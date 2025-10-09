@@ -1,6 +1,6 @@
 'use client'
 
-import { Calendar, Home, Inbox, Search, Settings, Plus, MoreHorizontal } from "lucide-react"
+import { Plus, MoreHorizontal } from "lucide-react"
 import {
   SidebarGroup,
   SidebarGroupContent,
@@ -35,29 +35,24 @@ import { Button } from "@/components/ui/button"
 // Menu items.
 const items = [
   {
-    title: "Home",
+    title: "Workspace1",
     url: "#",
-    icon: Home,
   },
   {
-    title: "Inbox",
+    title: "Workspace2",
     url: "#",
-    icon: Inbox,
   },
   {
-    title: "Calendar",
+    title: "Workspace3",
     url: "#",
-    icon: Calendar,
   },
   {
-    title: "Search",
+    title: "Workspace4",
     url: "#",
-    icon: Search,
   },
   {
-    title: "Settings",
+    title: "Workspace5",
     url: "#",
-    icon: Settings,
   },
 ]
 
@@ -104,22 +99,21 @@ export default function WorkspaceList() {
             <SidebarMenuItem key={item.title}>
                 <SidebarMenuButton asChild>
                 <a href={item.url}>
-                    <item.icon />
                     <span>{item.title}</span>
                 </a>
                 </SidebarMenuButton>
-                <DropdownMenu>
-                <DropdownMenuTrigger asChild>
-                <SidebarMenuAction>
-                    <MoreHorizontal />
-                </SidebarMenuAction>
+                <DropdownMenu modal={false}>
+                  <DropdownMenuTrigger asChild>
+                  <SidebarMenuAction>
+                      <MoreHorizontal />
+                  </SidebarMenuAction>
                 </DropdownMenuTrigger>
-                <DropdownMenuContent side="right" align="start">
+                <DropdownMenuContent>
                 <DropdownMenuItem>
                     <span>Exit</span>
                 </DropdownMenuItem>
                 </DropdownMenuContent>
-            </DropdownMenu>
+              </DropdownMenu>
             </SidebarMenuItem>
             ))}
         </SidebarMenu>
