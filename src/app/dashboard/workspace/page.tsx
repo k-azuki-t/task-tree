@@ -1,46 +1,28 @@
-import { TaskTable } from "@/components/features/WorkSpace/components/TaskTable"
-import {
-  Avatar,
-  AvatarFallback,
-  AvatarImage,
-} from "@/components/ui/avatar"
+import { ProjectTable } from "@/components/features/WorkSpace/components/ProjectTable"
+import WorkspaceSidebar from "@/components/features/WorkSpace/components/WorkspaceSidebar"
+import { SidebarProvider } from "@/components/ui/sidebar"
 
 
 export default function Page() {
   return (
-    <div className="flex flex-col grow-1 space-y-10 p-10">
-      <div>
-        <h1 className="text-7xl font-bold">WorkSpace A</h1>
-      </div>
-      <div className="flex flex-col space-y-6">
-        <div className="flex flex-col space-y-2">
-          <p className="text-base text-neutral-500 font-bold">Member</p>
-          <div className="*:data-[slot=avatar]:ring-background flex -space-x-2 *:data-[slot=avatar]:ring-2 *:data-[slot=avatar]:grayscale">
-            <Avatar className="w-10 h-10">
-              <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
-              <AvatarFallback>CN</AvatarFallback>
-            </Avatar>
-            <Avatar className="w-10 h-10">
-              <AvatarImage src="https://github.com/leerob.png" alt="@leerob" />
-              <AvatarFallback>LR</AvatarFallback>
-            </Avatar>
-            <Avatar className="w-10 h-10">
-              <AvatarImage
-                src="https://github.com/evilrabbit.png"
-                alt="@evilrabbit"
-              />
-              <AvatarFallback>ER</AvatarFallback>
-            </Avatar>
+    <SidebarProvider open={true}>
+        <WorkspaceSidebar wid={'1'} />
+        <div className="md:-ml-[var(--sidebar-width)] md:pr-[var(--sidebar-width)]">
+        <div className="flex flex-col grow-1 space-y-10 p-10">
+          <div>
+            <h1 className="text-7xl font-bold">WorkSpace A</h1>
           </div>
-        </div>
-        <div className="flex flex-col space-y-2">
-          <p className="text-base text-neutral-500 font-bold">Description</p>
-          <div className="text-base text-neutral-500">
-            Here is a test Workspace!
+          <div className="flex flex-col space-y-6">
+            <div className="flex flex-col space-y-2">
+              <p className="text-base text-neutral-500 font-bold">Description</p>
+              <div className="text-base text-neutral-500">
+                Here is a test Workspace!
+              </div>
+            </div>
           </div>
+          <ProjectTable />
         </div>
-      </div>
-      <TaskTable />
-    </div>
+        </div>
+    </ SidebarProvider>
   )
 }

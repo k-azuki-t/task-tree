@@ -30,31 +30,8 @@ import {
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Button } from "@/components/ui/button"
+import { workspaceList } from "../../../../../../tmp/data/workspace"
 
- 
-// Menu items.
-const items = [
-  {
-    title: "Workspace1",
-    url: "#",
-  },
-  {
-    title: "Workspace2",
-    url: "#",
-  },
-  {
-    title: "Workspace3",
-    url: "#",
-  },
-  {
-    title: "Workspace4",
-    url: "#",
-  },
-  {
-    title: "Workspace5",
-    url: "#",
-  },
-]
 
 export default function WorkspaceList() {
   return (
@@ -95,11 +72,11 @@ export default function WorkspaceList() {
         </SidebarGroupAction>
         <SidebarGroupContent>
         <SidebarMenu>
-            {items.map((item) => (
-            <SidebarMenuItem key={item.title}>
+            {workspaceList.map((workspace) => (
+            <SidebarMenuItem key={workspace.wid}>
                 <SidebarMenuButton asChild>
-                <a href={item.url}>
-                    <span>{item.title}</span>
+                <a href={workspace.wid}>
+                    <span>{workspace.name}</span>
                 </a>
                 </SidebarMenuButton>
                 <DropdownMenu modal={false}>
@@ -108,12 +85,12 @@ export default function WorkspaceList() {
                       <MoreHorizontal />
                   </SidebarMenuAction>
                 </DropdownMenuTrigger>
-                <DropdownMenuContent>
+                <DropdownMenuContent side="right" align="start">
                 <DropdownMenuItem>
                     <span>Exit</span>
                 </DropdownMenuItem>
                 </DropdownMenuContent>
-              </DropdownMenu>
+            </DropdownMenu>
             </SidebarMenuItem>
             ))}
         </SidebarMenu>
