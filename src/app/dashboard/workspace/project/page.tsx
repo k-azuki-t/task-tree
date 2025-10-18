@@ -1,5 +1,7 @@
+import { taskList } from "$/data/task"
 import { ProjectSidebar } from "@/components/features/Project/components/ProjectSidebar"
 import { TaskTable } from "@/components/features/Project/components/TaskTable"
+import TaskTree from "@/components/shared/TaskTree"
 import { SidebarProvider } from "@/components/ui/sidebar"
 
 
@@ -20,6 +22,7 @@ export default function Page() {
                 </div>
                 </div>
             </div>
+            <TaskTree tasks={taskList} />
             <TaskTable />
             </div>
         </div>

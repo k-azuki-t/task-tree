@@ -30,14 +30,14 @@ import {
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Button } from "@/components/ui/button"
-import { projectList } from "../../../../../../tmp/data/projet"
+import { projectList1 } from "../../../../../../tmp/data/projet"
 import User from "@/components/shared/User"
 
 
 export default function LeaderList() {
   return (
     <SidebarGroup className="space-y-2">
-        <SidebarGroupLabel>member</SidebarGroupLabel>
+        <SidebarGroupLabel>Leader</SidebarGroupLabel>
         <SidebarGroupAction title="Add Project">
             <Dialog>
                 <form>
@@ -69,7 +69,7 @@ export default function LeaderList() {
         </SidebarGroupAction>
         <SidebarGroupContent>
             <SidebarMenu className="space-y-2">
-                {projectList.map((project) => (
+                {projectList1.map((project) => (
                     project.pid === '1' &&
                         project.leader.map((leader) => (
                             <SidebarMenuItem key={leader.uid}>

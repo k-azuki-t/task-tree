@@ -1,6 +1,6 @@
 'use client'
 
-import { projectList } from "../../../../../tmp/data/projet";
+import { projectList1 } from "../../../../../tmp/data/projet";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import {
   Table,
@@ -27,7 +27,7 @@ export function ProjectTable() {
         </TableRow>
       </TableHeader>
       <TableBody>
-        {projectList.map((project) => (
+        {projectList1.map((project) => (
           <TableRow key={project.pid} className="h-20" onClick={() => router.push("/dashboard")}>
             <TableCell className="text-xl font-bold">{project.name}</TableCell>
             <TableCell>{project.dueDate.toDateString()}</TableCell>

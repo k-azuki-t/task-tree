@@ -3,6 +3,14 @@ import { loginUser, user } from "./user"
 type status = "pending" | "processing" | "reviewing" | "done" | "duplicate";
 type priority = "low" | "medium" | "high" | "argent";
 
+export type chat = {
+    cid: string,
+    user: user,
+    content: string,
+    createdAt: Date,
+    updatedAt: Date,
+}
+
 export type task = {
     tid: string,
     name: string,
@@ -18,7 +26,9 @@ export type task = {
     startedAt: Date,
     finishedAt: Date,
     dueDate: Date,
+    chat: chat[],
 }
+
 
 export const taskList: task[] = [
     {
@@ -36,6 +46,7 @@ export const taskList: task[] = [
         startedAt: new Date("2025-10-11"),
         finishedAt: new Date("2025-10-11"),
         dueDate: new Date("2025-10-11"),
+        chat: [],
     },
     {
         tid: "2",
@@ -46,12 +57,13 @@ export const taskList: task[] = [
         status: "pending",
         point: 1,
         description: "this is a test task",
-        parentTask: null,
+        parentTask: '1',
         tag: [],
         createdAt: new Date("2025-10-11"),
         startedAt: new Date("2025-10-11"),
         finishedAt: new Date("2025-10-11"),
         dueDate: new Date("2025-10-11"),
+        chat: [],
     },
     {
         tid: "3",
@@ -62,11 +74,12 @@ export const taskList: task[] = [
         status: "pending",
         point: 1,
         description: "this is a test task",
-        parentTask: null,
+        parentTask: '2',
         tag: [],
         createdAt: new Date("2025-10-11"),
         startedAt: new Date("2025-10-11"),
         finishedAt: new Date("2025-10-11"),
         dueDate: new Date("2025-10-11"),
+        chat: [],
     },
 ]
