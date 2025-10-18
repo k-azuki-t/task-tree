@@ -1,6 +1,6 @@
 import { loginUser, user } from "./user"
 
-type status = "pending" | "processing" | "reviewing" | "done" | "duplicate";
+type status = "pending" | "in-progress" | "reviewing" | "completed" | "duplicated";
 type priority = "low" | "medium" | "high" | "argent";
 
 export type chat = {

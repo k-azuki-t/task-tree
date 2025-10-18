@@ -10,7 +10,27 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table"
+import { ArrowBigDown, ArrowBigRight, ArrowBigUp, CircleAlert, CircleCheckBig, CircleDashed, CircleEllipsis, Loader, LoaderCircle, LucideIcon } from "lucide-react";
 import { useRouter } from "next/navigation"
+import React from "react";
+
+type TaskStatus = "pending" | "in-progress" | "reviewing" | "completed" | "duplicated";
+type TaskPriority = "low" | "medium" | "high" | "argent";
+
+const taskStats: Record<TaskStatus, LucideIcon>  = {
+    "pending": CircleDashed,
+    "in-progress": LoaderCircle,
+    "reviewing": CircleEllipsis,
+    "completed": CircleCheckBig,
+    "duplicated": Loader
+}
+
+const tastPriprity: Record<TaskPriority, LucideIcon>  = {
+    "low": ArrowBigDown,
+    "medium": ArrowBigRight,
+    "high": ArrowBigUp,
+    "argent": CircleAlert
+}
 
 export function TaskTable() {
 
@@ -34,8 +54,8 @@ export function TaskTable() {
             <TableCell className="text-xl font-bold">{task.name}</TableCell>
             <TableCell><User user={task.assignee} /></TableCell>
             <TableCell><User user={task.reviewer} /></TableCell>
-            <TableCell>{task.status}</TableCell>
-            <TableCell>{task.priority}</TableCell>
+            <TableCell>{React.createElement(taskStats[task.status])}</TableCell>
+            <TableCell>{React.createElement(tastPriprity[task.priority])}</TableCell>
             <TableCell>{task.dueDate.toDateString()}</TableCell>
           </TableRow>
         ))}
