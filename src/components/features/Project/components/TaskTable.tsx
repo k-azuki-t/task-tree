@@ -1,6 +1,6 @@
 'use client'
 
-import { taskList } from "../../../../../tmp/data/task";
+import { task, taskList1_1, taskPriprityList, taskStatsList } from "../../../../../tmp/data/task";
 import User from "@/components/shared/User";
 import {
   Table,
@@ -10,29 +10,10 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table"
-import { ArrowBigDown, ArrowBigRight, ArrowBigUp, CircleAlert, CircleCheckBig, CircleDashed, CircleEllipsis, Loader, LoaderCircle, LucideIcon } from "lucide-react";
 import { useRouter } from "next/navigation"
-import React from "react";
 
-type TaskStatus = "pending" | "in-progress" | "reviewing" | "completed" | "duplicated";
-type TaskPriority = "low" | "medium" | "high" | "argent";
 
-const taskStats: Record<TaskStatus, LucideIcon>  = {
-    "pending": CircleDashed,
-    "in-progress": LoaderCircle,
-    "reviewing": CircleEllipsis,
-    "completed": CircleCheckBig,
-    "duplicated": Loader
-}
-
-const tastPriprity: Record<TaskPriority, LucideIcon>  = {
-    "low": ArrowBigDown,
-    "medium": ArrowBigRight,
-    "high": ArrowBigUp,
-    "argent": CircleAlert
-}
-
-export function TaskTable() {
+export function TaskTable({tasks}: {tasks: task[]}) {
 
   const router = useRouter();
 
@@ -49,16 +30,20 @@ export function TaskTable() {
         </TableRow>
       </TableHeader>
       <TableBody>
-        {taskList.map((task) => (
-          <TableRow key={task.tid} className="h-20" onClick={() => router.push("/dashboard")}>
-            <TableCell className="text-xl font-bold">{task.name}</TableCell>
-            <TableCell><User user={task.assignee} /></TableCell>
-            <TableCell><User user={task.reviewer} /></TableCell>
-            <TableCell>{React.createElement(taskStats[task.status])}</TableCell>
-            <TableCell>{React.createElement(tastPriprity[task.priority])}</TableCell>
-            <TableCell>{task.dueDate.toDateString()}</TableCell>
-          </TableRow>
-        ))}
+        {tasks.map((task) => {
+            const TaskStatus = taskStatsList[task.status];
+            const TaskPriority = taskPriprityList[task.priority];
+            return (
+                <TableRow key={task.tid} className="h-20" onClick={() => router.push("/dashboard")}>
+                    <TableCell className="text-xl font-bold">{task.name}</TableCell>
+                    <TableCell><User user={task.assignee} /></TableCell>
+                    <TableCell><User user={task.reviewer} /></TableCell>
+                    <TableCell><TaskStatus/></TableCell>
+                    <TableCell><TaskPriority/></TableCell>
+                    <TableCell>{task.dueDate.toDateString()}</TableCell>
+                </TableRow>
+            )
+            })}
       </TableBody>
     </Table>
   )

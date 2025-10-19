@@ -36,7 +36,7 @@ import User from "@/components/shared/User"
 import { workspaceList } from "$/data/workspace"
 
 
-export default function WorkspaceSidebar({wid}: {wid: string}) {
+export default function WorkspaceRightSidebar({wid}: {wid: string}) {
   return (
     <Sidebar side="right" collapsible="offcanvas">
         <SidebarContent>

@@ -1,7 +1,23 @@
+import { ArrowBigDown, ArrowBigRight, ArrowBigUp, CircleAlert, CircleCheckBig, CircleDashed, CircleEllipsis, Loader, LoaderCircle, LucideIcon } from "lucide-react";
 import { loginUser, user } from "./user"
 
-type status = "pending" | "in-progress" | "reviewing" | "completed" | "duplicated";
-type priority = "low" | "medium" | "high" | "argent";
+type taskStatus = "pending" | "in-progress" | "reviewing" | "completed" | "duplicated";
+type taskPriority = "low" | "medium" | "high" | "argent";
+
+export const taskStatsList: Record<taskStatus, LucideIcon> = {
+    "pending": CircleDashed,
+    "in-progress": LoaderCircle,
+    "reviewing": CircleEllipsis,
+    "completed": CircleCheckBig,
+    "duplicated": Loader,
+}
+
+export const taskPriprityList: Record<taskPriority, LucideIcon> = {
+    "low": ArrowBigDown,
+    "medium": ArrowBigRight,
+    "high": ArrowBigUp,
+    "argent": CircleAlert,
+}
 
 export type chat = {
     cid: string,
@@ -16,8 +32,8 @@ export type task = {
     name: string,
     assignee: user,
     reviewer: user,
-    priority: priority,
-    status: status,
+    priority: taskPriority,
+    status: taskStatus,
     point: number,
     description: string,
     parentTask: string | null,
@@ -30,10 +46,10 @@ export type task = {
 }
 
 
-export const taskList: task[] = [
+export const taskList1_1: task[] = [
     {
         tid: "1",
-        name: "Task1",
+        name: "Task 1-1-1",
         assignee: loginUser,
         reviewer: loginUser,
         priority: "low",
@@ -50,7 +66,7 @@ export const taskList: task[] = [
     },
     {
         tid: "2",
-        name: "Task2",
+        name: "Task 1-1-2",
         assignee: loginUser,
         reviewer: loginUser,
         priority: "medium",
@@ -67,7 +83,169 @@ export const taskList: task[] = [
     },
     {
         tid: "3",
-        name: "Task3",
+        name: "Task 1-1-3",
+        assignee: loginUser,
+        reviewer: loginUser,
+        priority: "medium",
+        status: "pending",
+        point: 1,
+        description: "this is a test task",
+        parentTask: '2',
+        tag: [],
+        createdAt: new Date("2025-10-11"),
+        startedAt: new Date("2025-10-11"),
+        finishedAt: new Date("2025-10-11"),
+        dueDate: new Date("2025-10-11"),
+        chat: [],
+    },
+]
+
+export const taskList1_2: task[] = [
+    {
+        tid: "1",
+        name: "Task 1-2-1",
+        assignee: loginUser,
+        reviewer: loginUser,
+        priority: "low",
+        status: "pending",
+        point: 1,
+        description: "this is a test task",
+        parentTask: null,
+        tag: [],
+        createdAt: new Date("2025-10-11"),
+        startedAt: new Date("2025-10-11"),
+        finishedAt: new Date("2025-10-11"),
+        dueDate: new Date("2025-10-11"),
+        chat: [],
+    },
+    {
+        tid: "2",
+        name: "Task 1-2-2",
+        assignee: loginUser,
+        reviewer: loginUser,
+        priority: "medium",
+        status: "pending",
+        point: 1,
+        description: "this is a test task",
+        parentTask: '1',
+        tag: [],
+        createdAt: new Date("2025-10-11"),
+        startedAt: new Date("2025-10-11"),
+        finishedAt: new Date("2025-10-11"),
+        dueDate: new Date("2025-10-11"),
+        chat: [],
+    },
+    {
+        tid: "3",
+        name: "Task 1-2-3",
+        assignee: loginUser,
+        reviewer: loginUser,
+        priority: "medium",
+        status: "pending",
+        point: 1,
+        description: "this is a test task",
+        parentTask: '2',
+        tag: [],
+        createdAt: new Date("2025-10-11"),
+        startedAt: new Date("2025-10-11"),
+        finishedAt: new Date("2025-10-11"),
+        dueDate: new Date("2025-10-11"),
+        chat: [],
+    },
+]
+
+export const taskList2_1: task[] = [
+    {
+        tid: "1",
+        name: "Task 2-1-1",
+        assignee: loginUser,
+        reviewer: loginUser,
+        priority: "low",
+        status: "pending",
+        point: 1,
+        description: "this is a test task",
+        parentTask: null,
+        tag: [],
+        createdAt: new Date("2025-10-11"),
+        startedAt: new Date("2025-10-11"),
+        finishedAt: new Date("2025-10-11"),
+        dueDate: new Date("2025-10-11"),
+        chat: [],
+    },
+    {
+        tid: "2",
+        name: "Task 2-1-2",
+        assignee: loginUser,
+        reviewer: loginUser,
+        priority: "medium",
+        status: "pending",
+        point: 1,
+        description: "this is a test task",
+        parentTask: '1',
+        tag: [],
+        createdAt: new Date("2025-10-11"),
+        startedAt: new Date("2025-10-11"),
+        finishedAt: new Date("2025-10-11"),
+        dueDate: new Date("2025-10-11"),
+        chat: [],
+    },
+    {
+        tid: "3",
+        name: "Task 3-1-3",
+        assignee: loginUser,
+        reviewer: loginUser,
+        priority: "medium",
+        status: "pending",
+        point: 1,
+        description: "this is a test task",
+        parentTask: '2',
+        tag: [],
+        createdAt: new Date("2025-10-11"),
+        startedAt: new Date("2025-10-11"),
+        finishedAt: new Date("2025-10-11"),
+        dueDate: new Date("2025-10-11"),
+        chat: [],
+    },
+]
+
+export const taskList2_2: task[] = [
+    {
+        tid: "1",
+        name: "Task 2-2-1",
+        assignee: loginUser,
+        reviewer: loginUser,
+        priority: "low",
+        status: "pending",
+        point: 1,
+        description: "this is a test task",
+        parentTask: null,
+        tag: [],
+        createdAt: new Date("2025-10-11"),
+        startedAt: new Date("2025-10-11"),
+        finishedAt: new Date("2025-10-11"),
+        dueDate: new Date("2025-10-11"),
+        chat: [],
+    },
+    {
+        tid: "2",
+        name: "Task 2-2-2",
+        assignee: loginUser,
+        reviewer: loginUser,
+        priority: "medium",
+        status: "pending",
+        point: 1,
+        description: "this is a test task",
+        parentTask: '1',
+        tag: [],
+        createdAt: new Date("2025-10-11"),
+        startedAt: new Date("2025-10-11"),
+        finishedAt: new Date("2025-10-11"),
+        dueDate: new Date("2025-10-11"),
+        chat: [],
+    },
+    {
+        tid: "3",
+        name: "Task 2-2-3",
         assignee: loginUser,
         reviewer: loginUser,
         priority: "medium",

@@ -1,31 +1,34 @@
-import { taskList } from "$/data/task"
-import { ProjectSidebar } from "@/components/features/Project/components/ProjectSidebar"
+import { workspaceList } from "$/data/workspace"
+import { ProjectRightSidebar } from "@/components/features/Project/components/ProjectRightSidebar"
 import { TaskTable } from "@/components/features/Project/components/TaskTable"
 import TaskTree from "@/components/shared/TaskTree"
 import { SidebarProvider } from "@/components/ui/sidebar"
 
 
-export default function Page() {
+export default async function Page({ params }: { params: Promise<{pid: string, wid: string}> }) {
+  const { pid, wid } =  await params;
+  const project = workspaceList.find(ws => ws.wid === wid)?.project.find(pj => pj.pid === pid);
+  const taskList = project?.task;
   return (
     <SidebarProvider open={true}>
-        <ProjectSidebar />
+        <ProjectRightSidebar />
         <div className="md:-ml-[var(--sidebar-width)] md:pr-[var(--sidebar-width)]">
             <div className="flex flex-col grow-1 space-y-10 p-10 ">
             <div>
-                <h1 className="text-7xl font-bold">Project A</h1>
+                <h1 className="text-7xl font-bold">{project?.name}</h1>
             </div>
             <div className="flex flex-col space-y-6">
                 <div className="flex flex-col space-y-2">
                 <p className="text-base text-neutral-500 font-bold">Description</p>
                 <div className="text-base text-neutral-500">
-                    Here is a test Workspace!
+                    {project?.description}
                 </div>
                 </div>
             </div>
-            <TaskTree tasks={taskList} />
-            <TaskTable />
+            {taskList && <TaskTree tasks={taskList} />}
+            {taskList && <TaskTable tasks={taskList} />}
             </div>
         </div>
-    </ SidebarProvider>
+    </SidebarProvider>
   )
 }
