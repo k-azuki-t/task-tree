@@ -1,6 +1,6 @@
 'use client'
 
-import { Calendar, Home, Inbox, Search, Settings, Plus, MoreHorizontal } from "lucide-react"
+import { Plus, MoreHorizontal } from "lucide-react"
 import {
   SidebarGroup,
   SidebarGroupContent,
@@ -30,38 +30,10 @@ import {
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Button } from "@/components/ui/button"
+import { workspace } from "../../../../../../tmp/data/workspace"
 
- 
-// Menu items.
-const items = [
-  {
-    title: "Home",
-    url: "#",
-    icon: Home,
-  },
-  {
-    title: "Inbox",
-    url: "#",
-    icon: Inbox,
-  },
-  {
-    title: "Calendar",
-    url: "#",
-    icon: Calendar,
-  },
-  {
-    title: "Search",
-    url: "#",
-    icon: Search,
-  },
-  {
-    title: "Settings",
-    url: "#",
-    icon: Settings,
-  },
-]
 
-export default function WorkspaceList() {
+export default function WorkspaceList({workspaceList}: {workspaceList: workspace[]}) {
   return (
     <SidebarGroup>
         <SidebarGroupLabel>Workspace</SidebarGroupLabel>
@@ -100,19 +72,18 @@ export default function WorkspaceList() {
         </SidebarGroupAction>
         <SidebarGroupContent>
         <SidebarMenu>
-            {items.map((item) => (
-            <SidebarMenuItem key={item.title}>
+            {workspaceList.map((workspace) => (
+            <SidebarMenuItem key={workspace.wid}>
                 <SidebarMenuButton asChild>
-                <a href={item.url}>
-                    <item.icon />
-                    <span>{item.title}</span>
+                <a href={`/dashboard/${workspace.wid}`}>
+                    <span>{workspace.name}</span>
                 </a>
                 </SidebarMenuButton>
-                <DropdownMenu>
-                <DropdownMenuTrigger asChild>
-                <SidebarMenuAction>
-                    <MoreHorizontal />
-                </SidebarMenuAction>
+                <DropdownMenu modal={false}>
+                  <DropdownMenuTrigger asChild>
+                  <SidebarMenuAction>
+                      <MoreHorizontal />
+                  </SidebarMenuAction>
                 </DropdownMenuTrigger>
                 <DropdownMenuContent side="right" align="start">
                 <DropdownMenuItem>

@@ -1,12 +1,7 @@
+import { loginUser } from '../../../../../../tmp/data/user'
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from '@/components/ui/dropdown-menu'
 import { SidebarFooter, SidebarMenu, SidebarMenuButton, SidebarMenuItem } from '@/components/ui/sidebar'
 import Image from 'next/image'
-
-import myIcon from '$/img/kurage.jpg'
-const user = {
-    name: "kurage",
-    icon: myIcon,
-}
 
 export default function AppSidebarFooter() {
   return (
@@ -17,13 +12,13 @@ export default function AppSidebarFooter() {
                 <DropdownMenuTrigger asChild>
                   <SidebarMenuButton className="h-12 space-x-2">
                     <Image
-                      src={user.icon}
-                      alt={user.name}
+                      src={loginUser.photoUrl}
+                      alt={loginUser.name}
                       width={32}
                       height={32}
                       className="rounded-full"
                     />
-                    <span>{user.name}</span>
+                    <span>{loginUser.name}</span>
                   </SidebarMenuButton>
                 </DropdownMenuTrigger>
                 <DropdownMenuContent
