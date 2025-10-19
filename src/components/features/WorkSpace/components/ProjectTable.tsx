@@ -1,6 +1,7 @@
 'use client'
 
-import { projectList } from "../../../../../tmp/data/projet";
+import { workspaceList } from "$/data/workspace";
+import { projectStatusList } from "../../../../../tmp/data/projet";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import {
   Table,
@@ -12,9 +13,10 @@ import {
 } from "@/components/ui/table"
 import { useRouter } from "next/navigation"
 
-export function ProjectTable() {
+export function ProjectTable({wid}: {wid: string}) {
 
   const router = useRouter();
+  const projectList = workspaceList.find(ws => ws.wid === wid)?.project || [];
 
   return (
     <Table className="table-fixed w-full">
@@ -27,8 +29,10 @@ export function ProjectTable() {
         </TableRow>
       </TableHeader>
       <TableBody>
-        {projectList.map((project) => (
-          <TableRow key={project.pid} className="h-20" onClick={() => router.push("/dashboard")}>
+        {projectList.map((project) => {
+          const ProjectStatus = projectStatusList[project.status];
+          return (
+          <TableRow key={project.pid} className="h-20" onClick={() => router.push(`/dashboard/${wid}/${project.pid}`)}>
             <TableCell className="text-xl font-bold">{project.name}</TableCell>
             <TableCell>{project.dueDate.toDateString()}</TableCell>
             <TableCell>
@@ -41,10 +45,16 @@ export function ProjectTable() {
                 ))}
               </div>
               </TableCell>
-            <TableCell>test field</TableCell>
+            <TableCell>
+              <div className="flex flex-row items-center space-x-4">
+                <ProjectStatus />
+                <div>
+                  <p>{project.status}</p>
+                </div>
+              </div>
+            </TableCell>
           </TableRow>
-        ))}
+        )})}
       </TableBody>
     </Table>
-  )
-}
+  )}

@@ -1,5 +1,5 @@
-import { project, projectList } from "./projet"
-import { user, userList } from "./user"
+import { project, projectList1, projectList2 } from "./projet"
+import { user, userList1, userList2 } from "./user"
 
 
 export type workspace = {
@@ -14,18 +14,18 @@ export type workspace = {
 export const workspaceList = [
     {
         wid: "1",
-        name: "test1",
-        member: userList,
+        name: "workspace 1",
+        member: userList1,
         description: "this is a test workspace",
-        project: projectList,
+        project: projectList1,
         createdAt: new Date("2024-05-01")
     },
     {
         wid: "2",
-        name: "test2",
-        member: userList,
+        name: "workspace 2",
+        member: userList2,
         description: "this is a test workspace",
-        project: projectList,
+        project: projectList2,
         createdAt: new Date("2024-05-01")
     }
 ]

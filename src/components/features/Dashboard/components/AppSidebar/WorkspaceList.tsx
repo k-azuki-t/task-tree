@@ -30,10 +30,10 @@ import {
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Button } from "@/components/ui/button"
-import { workspaceList } from "../../../../../../tmp/data/workspace"
+import { workspace } from "../../../../../../tmp/data/workspace"
 
 
-export default function WorkspaceList() {
+export default function WorkspaceList({workspaceList}: {workspaceList: workspace[]}) {
   return (
     <SidebarGroup>
         <SidebarGroupLabel>Workspace</SidebarGroupLabel>
@@ -75,7 +75,7 @@ export default function WorkspaceList() {
             {workspaceList.map((workspace) => (
             <SidebarMenuItem key={workspace.wid}>
                 <SidebarMenuButton asChild>
-                <a href={workspace.wid}>
+                <a href={`/dashboard/${workspace.wid}`}>
                     <span>{workspace.name}</span>
                 </a>
                 </SidebarMenuButton>

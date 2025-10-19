@@ -1,6 +1,6 @@
 'use client'
 
-import { taskList } from "../../../../../tmp/data/task";
+import { task, taskList1_1, taskPriprityList, taskStatsList } from "../../../../../tmp/data/task";
 import User from "@/components/shared/User";
 import {
   Table,
@@ -12,7 +12,8 @@ import {
 } from "@/components/ui/table"
 import { useRouter } from "next/navigation"
 
-export function TaskTable() {
+
+export function TaskTable({tasks}: {tasks: task[]}) {
 
   const router = useRouter();
 
@@ -29,16 +30,20 @@ export function TaskTable() {
         </TableRow>
       </TableHeader>
       <TableBody>
-        {taskList.map((task) => (
-          <TableRow key={task.tid} className="h-20" onClick={() => router.push("/dashboard")}>
-            <TableCell className="text-xl font-bold">{task.name}</TableCell>
-            <TableCell><User user={task.assignee} /></TableCell>
-            <TableCell><User user={task.reviewer} /></TableCell>
-            <TableCell>{task.status}</TableCell>
-            <TableCell>{task.priority}</TableCell>
-            <TableCell>{task.dueDate.toDateString()}</TableCell>
-          </TableRow>
-        ))}
+        {tasks.map((task) => {
+            const TaskStatus = taskStatsList[task.status];
+            const TaskPriority = taskPriprityList[task.priority];
+            return (
+                <TableRow key={task.tid} className="h-20" onClick={() => router.push("/dashboard")}>
+                    <TableCell className="text-xl font-bold">{task.name}</TableCell>
+                    <TableCell><User user={task.assignee} /></TableCell>
+                    <TableCell><User user={task.reviewer} /></TableCell>
+                    <TableCell><TaskStatus/></TableCell>
+                    <TableCell><TaskPriority/></TableCell>
+                    <TableCell>{task.dueDate.toDateString()}</TableCell>
+                </TableRow>
+            )
+            })}
       </TableBody>
     </Table>
   )
