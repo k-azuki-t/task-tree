@@ -26,7 +26,7 @@ export default async function Page({ params }: { params: Promise<{pid: string, w
                 </div>
             </div>
             {taskList && <TaskTree tasks={taskList} />}
-            {taskList && <TaskTable tasks={taskList} />}
+            {taskList && <TaskTable tasks={taskList} wid={wid} pid={pid} />}
             </div>
         </div>
     </SidebarProvider>
