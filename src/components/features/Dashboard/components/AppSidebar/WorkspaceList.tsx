@@ -71,29 +71,29 @@ export default function WorkspaceList({workspaceList}: {workspaceList: workspace
                 </Dialog>
         </SidebarGroupAction>
         <SidebarGroupContent>
-        <SidebarMenu>
-            {workspaceList.map((workspace) => (
-            <SidebarMenuItem key={workspace.wid}>
-                <SidebarMenuButton asChild>
-                <a href={`/dashboard/${workspace.wid}`}>
-                    <span>{workspace.name}</span>
-                </a>
-                </SidebarMenuButton>
-                <DropdownMenu modal={false}>
-                  <DropdownMenuTrigger asChild>
-                  <SidebarMenuAction>
-                      <MoreHorizontal />
-                  </SidebarMenuAction>
-                </DropdownMenuTrigger>
-                <DropdownMenuContent side="right" align="start">
-                <DropdownMenuItem>
-                    <span>Exit</span>
-                </DropdownMenuItem>
-                </DropdownMenuContent>
-            </DropdownMenu>
-            </SidebarMenuItem>
-            ))}
-        </SidebarMenu>
+          <SidebarMenu>
+              {workspaceList.map((workspace) => (
+              <SidebarMenuItem key={workspace.wid}>
+                  <SidebarMenuButton asChild>
+                  <a href={`/dashboard/${workspace.wid}`}>
+                      <span>{workspace.name}</span>
+                  </a>
+                  </SidebarMenuButton>
+                  <DropdownMenu modal={false}>
+                    <DropdownMenuTrigger asChild>
+                    <SidebarMenuAction>
+                        <MoreHorizontal />
+                    </SidebarMenuAction>
+                  </DropdownMenuTrigger>
+                  <DropdownMenuContent side="right" align="start">
+                    <DropdownMenuItem>
+                        <span>Exit</span>
+                    </DropdownMenuItem>
+                  </DropdownMenuContent>
+              </DropdownMenu>
+              </SidebarMenuItem>
+              ))}
+          </SidebarMenu>
         </SidebarGroupContent>
     </SidebarGroup>
   )

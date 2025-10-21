@@ -12,7 +12,7 @@ export const taskStatsList: Record<taskStatus, LucideIcon> = {
     "duplicated": Loader,
 }
 
-export const taskPriprityList: Record<taskPriority, LucideIcon> = {
+export const taskPriorityList: Record<taskPriority, LucideIcon> = {
     "low": ArrowBigDown,
     "medium": ArrowBigRight,
     "high": ArrowBigUp,

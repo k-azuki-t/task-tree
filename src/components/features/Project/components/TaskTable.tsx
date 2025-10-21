@@ -1,6 +1,6 @@
 'use client'
 
-import { task, taskList1_1, taskPriprityList, taskStatsList } from "../../../../../tmp/data/task";
+import { task, taskPriorityList, taskStatsList } from "../../../../../tmp/data/task";
 import User from "@/components/shared/User";
 import {
   Table,
@@ -13,7 +13,7 @@ import {
 import { useRouter } from "next/navigation"
 
 
-export function TaskTable({tasks}: {tasks: task[]}) {
+export function TaskTable({tasks, wid, pid }: {tasks: task[], wid: string, pid: string}) {
 
   const router = useRouter();
 
@@ -32,9 +32,9 @@ export function TaskTable({tasks}: {tasks: task[]}) {
       <TableBody>
         {tasks.map((task) => {
             const TaskStatus = taskStatsList[task.status];
-            const TaskPriority = taskPriprityList[task.priority];
+            const TaskPriority = taskPriorityList[task.priority];
             return (
-                <TableRow key={task.tid} className="h-20" onClick={() => router.push("/dashboard")}>
+                <TableRow key={task.tid} className="h-20" onClick={() => router.push(`/dashboard/${wid}/${pid}/${task.tid}`)}>
                     <TableCell className="text-xl font-bold">{task.name}</TableCell>
                     <TableCell><User user={task.assignee} /></TableCell>
                     <TableCell><User user={task.reviewer} /></TableCell>
